@@ -54,6 +54,7 @@
               packages =
                 with pkgs;
                 [
+                  deno
                   lua-language-server
                 ]
                 ++ enabledPackages;
