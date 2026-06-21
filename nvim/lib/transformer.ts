@@ -23,6 +23,21 @@ export function extractFunctionBody(): Transformer<string> {
 }
 
 /**
+ * JSON 文字列をパースしてそのまま返す Transformer
+ */
+export function toJsonValue<T>(): Transformer<T> {
+  return {
+    transform(v: string): T {
+      try {
+        return JSON.parse(v) as T;
+      } catch {
+        return v as unknown as T;
+      }
+    },
+  };
+}
+
+/**
  * JSON 文字列を string[] に変換する Transformer
  */
 export function toStringArray(): Transformer<string[]> {
