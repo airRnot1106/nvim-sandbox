@@ -45,6 +45,10 @@ export class Config extends BaseConfig {
       plugins.push(plugin);
     }
 
-    return { plugins };
+    const cacheHome = Deno.env.get("XDG_CACHE_HOME") ??
+      join(Deno.env.get("HOME") ?? "~", ".cache");
+    const checkFiles = [join(cacheHome, "dpp", "config-sentinel")];
+
+    return { plugins, checkFiles };
   }
 }

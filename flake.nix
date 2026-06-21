@@ -74,6 +74,14 @@
           export DPP_EXT_INSTALLER_SRC="${dpp-ext-installer}"
           export DPP_EXT_LAZY_SRC="${dpp-ext-lazy}"
           export DPP_PROTOCOL_GIT_SRC="${dpp-protocol-git}"
+
+          # A sentinel to notify dpp's check_files of a flake rebuild
+          _sentinel="''${XDG_CACHE_HOME:-$HOME/.cache}/dpp/config-sentinel"
+          mkdir -p "$(dirname "$_sentinel")"
+          if [ "$(cat "$_sentinel" 2>/dev/null)" != "${self}" ]; then
+            printf '%s' "${self}" > "$_sentinel"
+          fi
+
           exec ${neovim-nightly}/bin/nvim "$@"
         '';
       in
