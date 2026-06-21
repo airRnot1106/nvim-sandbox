@@ -38,6 +38,86 @@
         "type": "github"
       }
     },
+    "denops-vim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1778798837,
+        "narHash": "sha256-z9FadzT6Y7vFLLdpFR/Ti/FVPGwED4uEkiNZZOkSkqU=",
+        "owner": "vim-denops",
+        "repo": "denops.vim",
+        "rev": "e82c5a94ca1154b05c9d74d6f6f58c9991b1424f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vim-denops",
+        "repo": "denops.vim",
+        "type": "github"
+      }
+    },
+    "dpp-ext-installer": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1782010673,
+        "narHash": "sha256-Gx9TqDB4uoFvRWftjYxxK7VFJ4eYPrjNzWRwFiV79uw=",
+        "owner": "Shougo",
+        "repo": "dpp-ext-installer",
+        "rev": "9a5ff8b519d6740a05606b071e19739d37d5d366",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Shougo",
+        "repo": "dpp-ext-installer",
+        "type": "github"
+      }
+    },
+    "dpp-ext-lazy": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1779671954,
+        "narHash": "sha256-fDCShrBy2nxfdyG5j9pbADb14Raz5NQarumcZhrch08=",
+        "owner": "Shougo",
+        "repo": "dpp-ext-lazy",
+        "rev": "6d3fd5696bf5147c52e2f91c4c996003fc9d5818",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Shougo",
+        "repo": "dpp-ext-lazy",
+        "type": "github"
+      }
+    },
+    "dpp-protocol-git": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1780569869,
+        "narHash": "sha256-HjIVog/Ibdd5iub7OxXtaw0qtmhGsExSRp62GSC6awg=",
+        "owner": "Shougo",
+        "repo": "dpp-protocol-git",
+        "rev": "e54eef6bd604a2faddf4703bc129eadda322bdc4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Shougo",
+        "repo": "dpp-protocol-git",
+        "type": "github"
+      }
+    },
+    "dpp-vim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1781776289,
+        "narHash": "sha256-6YJVMY++cTdZpeP1KnBO7Fqa6PJZ+FwB7pSvXgWVASw=",
+        "owner": "Shougo",
+        "repo": "dpp.vim",
+        "rev": "a6d53c8f5ca9d86198c9ddeed01585ad381de2db",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Shougo",
+        "repo": "dpp.vim",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -247,6 +327,11 @@
     "root": {
       "inputs": {
         "agent-skills": "agent-skills",
+        "denops-vim": "denops-vim",
+        "dpp-ext-installer": "dpp-ext-installer",
+        "dpp-ext-lazy": "dpp-ext-lazy",
+        "dpp-protocol-git": "dpp-protocol-git",
+        "dpp-vim": "dpp-vim",
         "flake-utils": "flake-utils",
         "git-hooks": "git-hooks",
         "neovim-nightly-overlay": "neovim-nightly-overlay",

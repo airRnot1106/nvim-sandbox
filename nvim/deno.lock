@@ -1,0 +1,39 @@
+{
+  "version": "5",
+  "specifiers": {
+    "jsr:@denops/core@^8.0.1": "8.0.1",
+    "jsr:@denops/std@8.2": "8.2.0",
+    "jsr:@shougo/dpp-vim@6.6": "6.6.0",
+    "jsr:@std/path@1.0": "1.0.9"
+  },
+  "jsr": {
+    "@denops/core@8.0.1": {
+      "integrity": "699c70b07b2347febb96972c857fb8325ad8efa99936a0a8c0bb2be82a8b8f32"
+    },
+    "@denops/std@8.2.0": {
+      "integrity": "6b473515c30a15b3ffe88accf11eabb7ed6210a1042311b563875bb10882f729",
+      "dependencies": [
+        "jsr:@denops/core"
+      ]
+    },
+    "@shougo/dpp-vim@6.6.0": {
+      "integrity": "72fa3cfdf73af6e724e5035eaa82ece17eb9ff82bc86c8928f7ee1ff4adb6fd0",
+      "dependencies": [
+        "jsr:@denops/std"
+      ]
+    },
+    "@std/path@1.0.9": {
+      "integrity": "260a49f11edd3db93dd38350bf9cd1b4d1366afa98e81b86167b4e3dd750129e"
+    }
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@denops/std@8.2",
+      "jsr:@shougo/dpp-ext-installer@2.2",
+      "jsr:@shougo/dpp-ext-lazy@~2.0.1",
+      "jsr:@shougo/dpp-protocol-git@2.0",
+      "jsr:@shougo/dpp-vim@6.6",
+      "jsr:@std/path@1.0"
+    ]
+  }
+}

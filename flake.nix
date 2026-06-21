@@ -18,6 +18,28 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ### plugin dependencies ###
+    dpp-vim = {
+      url = "github:Shougo/dpp.vim";
+      flake = false;
+    };
+    dpp-ext-installer = {
+      url = "github:Shougo/dpp-ext-installer";
+      flake = false;
+    };
+    dpp-ext-lazy = {
+      url = "github:Shougo/dpp-ext-lazy";
+      flake = false;
+    };
+    dpp-protocol-git = {
+      url = "github:Shougo/dpp-protocol-git";
+      flake = false;
+    };
+    denops-vim = {
+      url = "github:vim-denops/denops.vim";
+      flake = false;
+    };
   };
 
   outputs =
@@ -29,14 +51,29 @@
       neovim-nightly-overlay,
       nixpkgs,
       treefmt-nix,
-    }:
+      ...
+    }@inputs:
     flake-utils.lib.eachDefaultSystem (
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
         neovim-nightly = neovim-nightly-overlay.packages.${system}.neovim;
+
+        inherit (inputs)
+          dpp-vim
+          dpp-ext-installer
+          dpp-ext-lazy
+          dpp-protocol-git
+          denops-vim
+          ;
+
         nvim = pkgs.writeShellScriptBin "nvim" ''
           export XDG_CONFIG_HOME="${self}"
+          export DPP_VIM_SRC="${dpp-vim}"
+          export DPP_DENOPS_SRC="${denops-vim}"
+          export DPP_EXT_INSTALLER_SRC="${dpp-ext-installer}"
+          export DPP_EXT_LAZY_SRC="${dpp-ext-lazy}"
+          export DPP_PROTOCOL_GIT_SRC="${dpp-protocol-git}"
           exec ${neovim-nightly}/bin/nvim "$@"
         '';
       in
