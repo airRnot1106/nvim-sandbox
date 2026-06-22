@@ -22,6 +22,12 @@ export class Config extends BaseConfig {
   override async config(args: ConfigArguments): Promise<ConfigReturn> {
     args.contextBuilder.setGlobal({
       protocols: ["git"],
+      extParams: {
+        installer: {
+          minCommitDays: 7,
+          maxInactiveDays: 180,
+        },
+      },
     });
 
     const plugins: Plugin[] = [];
