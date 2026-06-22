@@ -4,12 +4,8 @@ import {
   ConfigArguments,
   ConfigReturn,
 } from "@shougo/dpp-vim/config";
-import { ExtOptions, Plugin } from "@shougo/dpp-vim/types";
-import type {
-  Ext as LazyExt,
-  LazyMakeStateResult,
-  Params as LazyParams,
-} from "@shougo/dpp-ext-lazy";
+import { Plugin } from "@shougo/dpp-vim/types";
+import type { LazyMakeStateResult } from "@shougo/dpp-ext-lazy";
 import { flexibleParser, functionParser } from "./lib/parser.ts";
 import {
   extractFunctionBody,
@@ -56,29 +52,16 @@ export class Config extends BaseConfig {
     }
 
     const [context, options] = await args.contextBuilder.get(args.denops);
-    const protocols = await args.dpp.getProtocols(args.denops, options);
 
-    const [lazyExt, lazyOptions, lazyParams] = await args.dpp.getExt(
+    const lazyResult = await args.dpp.extAction(
       args.denops,
+      context,
       options,
       "lazy",
-    ) as [LazyExt | undefined, ExtOptions, LazyParams];
-
-    let stateLines: string[] = [];
-    if (lazyExt) {
-      const lazyResult = await lazyExt.actions.makeState.callback({
-        denops: args.denops,
-        context,
-        options,
-        protocols,
-        extOptions: lazyOptions,
-        extParams: lazyParams,
-        actionParams: { plugins },
-      }) as LazyMakeStateResult | undefined;
-      if (lazyResult) {
-        stateLines = lazyResult.stateLines;
-      }
-    }
+      "makeState",
+      { plugins },
+    ) as LazyMakeStateResult | undefined;
+    const stateLines = lazyResult?.stateLines ?? [];
 
     const cacheHome = Deno.env.get("XDG_CACHE_HOME") ??
       join(Deno.env.get("HOME") ?? "~", ".cache");
