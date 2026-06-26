@@ -27,12 +27,5 @@ require("dpp_bootstrap").setup {
 vim.cmd "filetype indent plugin on"
 vim.cmd "syntax on"
 
--- Options
-require "options"
-
--- Keymaps
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-vim.keymap.set("n", "<C-h>", "<C-w>h")
-vim.keymap.set("n", "<C-j>", "<C-w>j")
-vim.keymap.set("n", "<C-k>", "<C-w>k")
-vim.keymap.set("n", "<C-l>", "<C-w>l")
+-- Options & keymaps
+require "config"
