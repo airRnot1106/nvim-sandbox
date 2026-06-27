@@ -93,7 +93,7 @@
             inherit (self.checks.${system}.git-hooks) shellHook enabledPackages;
           in
           {
-            default = pkgs.mkShellNoCC {
+            default = pkgs.mkShell {
               inputsFrom = [ agent-skills.devShells.${system}.default ];
               inherit shellHook;
               packages =
@@ -101,6 +101,7 @@
                 [
                   deno
                   lua-language-server
+                  tree-sitter
                 ]
                 ++ enabledPackages;
             };
