@@ -5,6 +5,7 @@ return {
     lua_source = function()
         require("tree-sitter-manager").setup {
             ensure_installed = {
+                "bash",
                 "elixir",
                 "gleam",
                 "go",
@@ -12,14 +13,18 @@ return {
                 "json",
                 "kdl",
                 "lua",
+                "markdown",
+                "markdown_inline",
                 "nix",
                 "pkl",
                 "python",
+                "regex",
                 "ruby",
                 "rust",
                 "toml",
                 "typescript",
                 "typst",
+                "vim",
                 "yaml",
             },
         }
