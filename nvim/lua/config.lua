@@ -62,23 +62,6 @@ keymap("x", "p", '"_dP', { silent = true })
 keymap("n", "<Esc>", "<cmd>nohlsearch<CR>", { silent = true })
 keymap("n", "*", "*N", { silent = true })
 
--- window
-keymap("n", "<C-h>", "<C-w>h", { silent = true })
-keymap("n", "<C-j>", "<C-w>j", { silent = true })
-keymap("n", "<C-k>", "<C-w>k", { silent = true })
-keymap("n", "<C-l>", "<C-w>l", { silent = true })
-
-keymap("n", "<Leader>gs", ":split<CR>", { silent = true })
-keymap("n", "<Leader>gv", ":vsplit<CR>", { silent = true })
-keymap("n", "<Leader>gh", "<C-w>h", { silent = true })
-keymap("n", "<Leader>gj", "<C-w>j", { silent = true })
-keymap("n", "<Leader>gk", "<C-w>k", { silent = true })
-keymap("n", "<Leader>gl", "<C-w>l", { silent = true })
-keymap("n", "<Leader>gw", "<C-w>w", { silent = true })
-keymap("n", "<Leader>gW", "<C-w>W", { silent = true })
-keymap("n", "<Leader>gd", "<C-w>c", { silent = true })
-keymap("n", "<Leader>gto", "<C-w>o", { silent = true })
-
 -- files
 vim.opt.fileencoding = "utf-8"
 vim.opt.swapfile = false
