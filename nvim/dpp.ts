@@ -10,6 +10,7 @@ import { flexibleParser, functionParser } from "./lib/parser.ts";
 import {
   extractFunctionBody,
   passThrough,
+  toBoolean,
   toJsonValue,
   toStringArray,
 } from "./lib/transformer.ts";
@@ -43,6 +44,7 @@ export class Config extends BaseConfig {
           name: passThrough(),
           repo: passThrough(),
           depends: toStringArray(),
+          lazy: toBoolean(),
           on_cmd: toJsonValue(),
           on_event: toJsonValue(),
           on_ft: toJsonValue(),

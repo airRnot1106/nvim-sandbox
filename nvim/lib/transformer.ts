@@ -10,6 +10,13 @@ export function passThrough(): Transformer<string> {
 }
 
 /**
+ * Boolean 文字列をパースしてそのまま返す Transformer
+ */
+export function toBoolean(): Transformer<boolean> {
+  return { transform: (v) => v === "true" };
+}
+
+/**
  * `function(...) ... end` リテラルからボディだけを取り出す Transformer
  */
 export function extractFunctionBody(): Transformer<string> {
