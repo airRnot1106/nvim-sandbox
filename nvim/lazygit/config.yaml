@@ -1,0 +1,49 @@
+# lazygit config managed by nvim (loaded via lazygit.nvim's lazygit_config_file_path)
+# replaces what snacks.nvim used to inject at runtime: nvim-remote edit integration
+# and a theme matching the rose-pine-moon colorscheme
+gui:
+  theme:
+    activeBorderColor:
+      - "#3e8fb0"
+      - bold
+
+    inactiveBorderColor:
+      - "#6e6a86"
+
+    searchingActiveBorderColor:
+      - "#ea9a97"
+      - bold
+
+    optionsTextColor:
+      - "#9ccfd8"
+
+    selectedLineBgColor:
+      - "#3e8fb0"
+
+    inactiveViewSelectedLineBgColor:
+      - "#393552"
+      - bold
+
+    cherryPickedCommitFgColor:
+      - "#2a273f"
+
+    cherryPickedCommitBgColor:
+      - "#ea9a97"
+
+    markedBaseCommitFgColor:
+      - "#9ccfd8"
+
+    markedBaseCommitBgColor:
+      - "#f6c177"
+
+    unstagedChangesColor:
+      - "#eb6f92"
+
+    defaultFgColor:
+      - "#e0def4"
+os:
+  # edit files in the same nvim instance; LazygitNewTab() decides reuse vs new tab
+  editPreset: "nvim-remote"
+  edit: '[ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send "q" && (test "$(nvim --server "$NVIM" --remote-expr "v:lua.LazygitNewTab()")" = 1 && nvim --server "$NVIM" --remote-tab {{filename}} || nvim --server "$NVIM" --remote {{filename}}))'
+  editAtLine: '[ -z "$NVIM" ] && (nvim +{{line}} -- {{filename}}) || (nvim --server "$NVIM" --remote-send "q" && (test "$(nvim --server "$NVIM" --remote-expr "v:lua.LazygitNewTab()")" = 1 && (nvim --server "$NVIM" --remote-tab {{filename}} && nvim --server "$NVIM" --remote-send ":{{line}}<CR>") || (nvim --server "$NVIM" --remote {{filename}} && nvim --server "$NVIM" --remote-send ":{{line}}<CR>")))'
+  openDirInEditor: '[ -z "$NVIM" ] && (nvim -- {{dir}}) || (nvim --server "$NVIM" --remote-send "q" && (test "$(nvim --server "$NVIM" --remote-expr "v:lua.LazygitNewTab()")" = 1 && nvim --server "$NVIM" --remote-tab {{dir}} || nvim --server "$NVIM" --remote {{dir}}))'
