@@ -31,42 +31,42 @@ vim.opt.tabstop = 2
 vim.opt.wrap = true
 vim.opt.whichwrap = "b,s,h,l,[,],<,>,~"
 
-keymap("", "k", "gk", { silent = true })
-keymap("", "j", "gj", { silent = true })
-keymap("", "K", "10gk", { silent = true })
-keymap("", "J", "10gj", { silent = true })
-keymap("", "H", "0", { silent = true })
-keymap("", "L", "$", { silent = true })
+keymap("", "k", "gk", { silent = true, desc = "Move up by display line" })
+keymap("", "j", "gj", { silent = true, desc = "Move down by display line" })
+keymap("", "K", "10gk", { silent = true, desc = "Move up 10 display lines" })
+keymap("", "J", "10gj", { silent = true, desc = "Move down 10 display lines" })
+keymap("", "H", "0", { silent = true, desc = "Go to line start" })
+keymap("", "L", "$", { silent = true, desc = "Go to line end" })
 
 -- editing
 vim.opt.virtualedit = "block"
 vim.opt.showmatch = true
 
-keymap("i", "jj", "<Esc>", { silent = true })
-keymap("n", "<C-d>", "dd", { silent = true })
-keymap("x", "<C-d>", "d", { silent = true })
+keymap("i", "jj", "<Esc>", { silent = true, desc = "Exit insert mode" })
+keymap("n", "<C-d>", "dd", { silent = true, desc = "Delete line" })
+keymap("x", "<C-d>", "d", { silent = true, desc = "Delete selection" })
 
 -- clipboard
 vim.opt.clipboard:append "unnamedplus"
 
-keymap({ "n", "x" }, "x", '"_x', { silent = true })
-keymap({ "n", "x" }, "s", '"_s', { silent = true })
-keymap({ "n", "x" }, "c", '"_c', { silent = true })
-keymap({ "n", "x" }, "d", '"_d', { silent = true })
-keymap("n", "C", '"_C', { silent = true })
-keymap("n", "D", '"_D', { silent = true })
-keymap("n", "S", '"_S', { silent = true })
-keymap("x", "p", '"_dP', { silent = true })
+keymap({ "n", "x" }, "x", '"_x', { silent = true, desc = "Delete char without yank" })
+keymap({ "n", "x" }, "s", '"_s', { silent = true, desc = "Substitute without yank" })
+keymap({ "n", "x" }, "c", '"_c', { silent = true, desc = "Change without yank" })
+keymap({ "n", "x" }, "d", '"_d', { silent = true, desc = "Delete without yank" })
+keymap("n", "C", '"_C', { silent = true, desc = "Change to line end without yank" })
+keymap("n", "D", '"_D', { silent = true, desc = "Delete to line end without yank" })
+keymap("n", "S", '"_S', { silent = true, desc = "Substitute line without yank" })
+keymap("x", "p", '"_dP', { silent = true, desc = "Paste without yank" })
 
 -- search
-keymap("n", "<Esc>", "<cmd>nohlsearch<CR>", { silent = true })
-keymap("n", "*", "*N", { silent = true })
+keymap("n", "<Esc>", "<cmd>nohlsearch<CR>", { silent = true, desc = "Clear search highlight" })
+keymap("n", "*", "*N", { silent = true, desc = "Search word under cursor" })
 
 -- files
 vim.opt.fileencoding = "utf-8"
 vim.opt.swapfile = false
 
-keymap("", "<Leader>w", ":w<CR>", { silent = true })
+keymap("", "<Leader>w", ":w<CR>", { silent = true, desc = "Save file" })
 
 -- misc
 vim.opt.mouse = ""

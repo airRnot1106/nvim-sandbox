@@ -28,13 +28,18 @@ return {
                     vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
                 end
 
-                vim.keymap.set("n", "<C-k>", "<Cmd>lua vim.lsp.buf.hover()<CR>")
-                vim.keymap.set("n", "<F2>", "<Cmd>lua vim.lsp.buf.rename()<CR>")
-                vim.keymap.set("n", "<Leader>.", "<Cmd>lua vim.lsp.buf.code_action()<CR>")
-                vim.keymap.set("n", "grd", "<Cmd>lua vim.lsp.buf.definition()<CR>")
-                vim.keymap.set("n", "grD", "<Cmd>lua vim.lsp.buf.declaration()<CR>")
-                vim.keymap.set("n", "ge", "<Cmd>lua vim.diagnostic.open_float()<CR>")
-                vim.keymap.set("n", "grf", "<Cmd>lua vim.lsp.buf.format({ async = false })<CR>")
+                vim.keymap.set("n", "<C-k>", "<Cmd>lua vim.lsp.buf.hover()<CR>", { desc = "LSP hover" })
+                vim.keymap.set("n", "<F2>", "<Cmd>lua vim.lsp.buf.rename()<CR>", { desc = "LSP rename" })
+                vim.keymap.set("n", "<Leader>.", "<Cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "LSP code action" })
+                vim.keymap.set("n", "grd", "<Cmd>lua vim.lsp.buf.definition()<CR>", { desc = "Go to definition" })
+                vim.keymap.set("n", "grD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", { desc = "Go to declaration" })
+                vim.keymap.set("n", "ge", "<Cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Show diagnostic" })
+                vim.keymap.set(
+                    "n",
+                    "grf",
+                    "<Cmd>lua vim.lsp.buf.format({ async = false })<CR>",
+                    { desc = "LSP format" }
+                )
             end,
         })
     end,

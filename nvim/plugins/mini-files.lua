@@ -16,7 +16,7 @@ return {
     lua_add = function()
         vim.keymap.set("n", "<Leader>e", function()
             require("mini.files").open()
-        end)
+        end, { desc = "Open file explorer" })
 
         local snacks = require "snacks"
         vim.api.nvim_create_autocmd("User", {
