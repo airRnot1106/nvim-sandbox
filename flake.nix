@@ -57,7 +57,12 @@
     flake-utils.lib.eachDefaultSystem (
       system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+          config = {
+            allowUnfree = true;
+          };
+        };
         neovim-nightly = neovim-nightly-overlay.packages.${system}.neovim;
 
         inherit (inputs)
@@ -101,6 +106,7 @@
               packages =
                 with pkgs;
                 [
+                  copilot-language-server
                   deno
                   lua-language-server
                   mocword.packages.${system}.default

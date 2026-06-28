@@ -9,6 +9,7 @@ return {
         "ddc-source-buffer",
         "ddc-source-cmdline",
         "ddc-source-cmdline_history",
+        "ddc-source-copilot",
         "ddc-source-file",
         "ddc-source-lsp",
         "ddc-source-mocword",
@@ -36,6 +37,7 @@ return {
         })
 
         patch_global("sources", {
+            "copilot",
             "skkeleton",
             "skkeleton_okuri",
             "lsp",
@@ -77,6 +79,12 @@ return {
             cmdline_history = {
                 mark = "history",
                 sorters = { "sorter_cmdline_history" },
+            },
+            copilot = {
+                mark = "[Copilot]",
+                matchers = {},
+                minAutoCompleteLength = 0,
+                isVolatile = true,
             },
             emoji = {
                 mark = "[E]",
@@ -142,6 +150,10 @@ return {
                 fromAltBuf = true,
                 forceCollect = true,
             },
+            copilot = {
+                copilot = "lua",
+            },
+
             lsp = {
                 snippetEngine = vim.fn["denops#callback#register"](function(body)
                     vim.snippet.expand(body)
