@@ -13,6 +13,13 @@ return {
                 L = gen_ai_spec.line(),
                 N = gen_ai_spec.number(),
             },
+            mappings = {
+                -- To prioritize v_an / v_in in 0.12, the mini.ai side has been disabled
+                around_next = "",
+                inside_next = "",
+                around_last = "",
+                inside_last = "",
+            },
         }
     end,
 }
