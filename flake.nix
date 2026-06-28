@@ -101,6 +101,7 @@
                 [
                   deno
                   lua-language-server
+                  ripgrep
                   tree-sitter
                 ]
                 ++ enabledPackages;

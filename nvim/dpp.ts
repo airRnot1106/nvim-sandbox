@@ -52,6 +52,7 @@ export class Config extends BaseConfig {
           on_map: toJsonValue(),
           lua_add: extractFunctionBody(),
           lua_source: extractFunctionBody(),
+          extAttrs: toJsonValue(),
         },
       );
 
