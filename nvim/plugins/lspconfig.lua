@@ -1,6 +1,7 @@
 return {
     name = "lspconfig",
     repo = "neovim/nvim-lspconfig",
+    depends = { "ddc-source-lsp" },
     on_event = { "VimEnter" },
     lua_source = function()
         local lsp_names = {
@@ -8,6 +9,10 @@ return {
             "lua_ls",
         }
         vim.lsp.enable(lsp_names)
+
+        vim.lsp.config("*", {
+            capabilities = require("ddc_source_lsp").make_client_capabilities(),
+        })
 
         vim.diagnostic.config {
             float = {
@@ -22,12 +27,7 @@ return {
         }
 
         vim.api.nvim_create_autocmd("LspAttach", {
-            callback = function(ev)
-                local client = vim.lsp.get_client_by_id(ev.data.client_id)
-                if client and client:supports_method "textDocument/completion" then
-                    vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-                end
-
+            callback = function()
                 vim.keymap.set("n", "<C-k>", "<Cmd>lua vim.lsp.buf.hover()<CR>", { desc = "LSP hover" })
                 vim.keymap.set("n", "<F2>", "<Cmd>lua vim.lsp.buf.rename()<CR>", { desc = "LSP rename" })
                 vim.keymap.set("n", "<Leader>.", "<Cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "LSP code action" })

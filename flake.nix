@@ -40,6 +40,7 @@
       url = "github:vim-denops/denops.vim";
       flake = false;
     };
+    mocword.url = "github:blyoa/nix-mocword";
   };
 
   outputs =
@@ -65,6 +66,7 @@
           dpp-ext-lazy
           dpp-protocol-git
           denops-vim
+          mocword
           ;
 
         nvim = pkgs.writeShellScriptBin "nvim" ''
@@ -101,6 +103,7 @@
                 [
                   deno
                   lua-language-server
+                  mocword.packages.${system}.default
                   ripgrep
                   tree-sitter
                 ]

@@ -17,6 +17,7 @@ return {
                     registerConvertResult = true,
                     sources = { "deno_kv", "google_japanese_input" },
                     databasePath = vim.fn.stdpath "data" .. "/skkeleton.db",
+                    completionRankFile = vim.fn.expand "~/.skkeleton/rank.json",
                 }
                 vim.fn["skkeleton#register_kanatable"]("rom", {
                     ["jj"] = "escape",
