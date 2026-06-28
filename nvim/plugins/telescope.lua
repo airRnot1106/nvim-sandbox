@@ -10,8 +10,7 @@ return {
         "telescope-fzf-native",
         "telescope-maccy",
     },
-    on_cmd = { "Telescope" },
-    on_map = { n = { "<Leader>f" } },
+    on_event = { "VimEnter" },
     lua_add = function()
         vim.g.sqlite_clib_path = "/usr/lib/libsqlite3.dylib"
     end,
