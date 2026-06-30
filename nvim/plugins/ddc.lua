@@ -12,6 +12,7 @@ return {
         "ddc-source-copilot",
         "ddc-source-file",
         "ddc-source-lsp",
+        "ddc-source-maccy",
         "ddc-source-mocword",
         "ddc-source-rg",
         "ddc-ui-pum",
@@ -37,6 +38,7 @@ return {
         })
 
         patch_global("sources", {
+            "maccy",
             "copilot",
             "skkeleton",
             "skkeleton_okuri",
@@ -105,6 +107,15 @@ return {
                 isVolatile = true,
                 forceCompletionPattern = [[\.\w*|:\w*|->\w*]],
             },
+            maccy = {
+                mark = "[Maccy]",
+                maxItems = 3,
+                matchers = {},
+                sorters = {},
+                converters = {},
+                isVolatile = true,
+                minAutoCompleteLength = 0,
+            },
             mocword = {
                 mark = "[M]",
                 maxItems = 8,
@@ -153,13 +164,19 @@ return {
             copilot = {
                 copilot = "lua",
             },
-
             lsp = {
                 snippetEngine = vim.fn["denops#callback#register"](function(body)
                     vim.snippet.expand(body)
                 end),
                 enableResolveItem = true,
                 enableAdditionalTextEdit = true,
+            },
+            maccy = {
+                recentMs = 30000,
+                cacheTtlMs = 2000,
+                types = { "public.utf8-plain-text" },
+                dbPath = "~/Library/Containers/org.p0deje.Maccy/Data/Library/Application Support/Maccy/Storage.sqlite",
+                maxByteLength = 10000,
             },
             path = {
                 absolute = false,
