@@ -217,30 +217,9 @@ return {
             { expr = true, desc = "Completion cancel" }
         )
 
-        vim.keymap.set({ "i", "s" }, "<Tab>", function()
-            if vim.fn["pum#visible"]() then
-                return "<Cmd>call pum#map#insert_relative(+1)<CR>"
-            elseif vim.snippet.active { direction = 1 } then
-                return "<Cmd>lua vim.snippet.jump(1)<CR>"
-            else
-                return "<Tab>"
-            end
-        end, { expr = true, desc = "Completion next / snippet jump forward" })
-        vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
-            if vim.fn["pum#visible"]() then
-                return "<Cmd>call pum#map#insert_relative(-1)<CR>"
-            elseif vim.snippet.active { direction = -1 } then
-                return "<Cmd>lua vim.snippet.jump(-1)<CR>"
-            else
-                return "<S-Tab>"
-            end
-        end, { expr = true, desc = "Completion previous / snippet jump backward" })
-
         local function commandline_pre()
             local maps = {
-                ["<Tab>"] = "+1",
                 ["<C-n>"] = "+1",
-                ["<S-Tab>"] = "-1",
                 ["<C-p>"] = "-1",
             }
             for lhs, delta in pairs(maps) do
